@@ -3,7 +3,7 @@ import { useState } from 'react'
 import axios, { all } from 'axios';
 import CountryItem from './CountryItem';
 
-function CounrtList({allCountries,setAllCountries}) {
+function CounrtList({allCountries,setAllCountries,setSelectedCountry}) {
     // const [allCountries,setAllCountries] = useState([]);   //#1 Run   , #8th
 
      //#4  make auto Execute in Frist Render 
@@ -25,10 +25,18 @@ function CounrtList({allCountries,setAllCountries}) {
                 let obj = {};
                 obj.name = country.name;
                 obj.flags = country.flags;
+                obj.region = country.region;
+                obj.population = country.population;
+                obj.capital = country.capital;
+                obj.languages = country.languages;
+                obj.borders = country.borders || [ ];
+                obj.currencies = country.currencies;
                 return obj;
             });
             // # 7 triggle Rerender
             setAllCountries(data);  
+            setSelectedCountry(data[0]);
+            
         }catch(error){
             console.log(error);
         }
@@ -49,7 +57,10 @@ function CounrtList({allCountries,setAllCountries}) {
     </div>
     <div className='country'>
       {allCountries.length > 0 && allCountries.map((country)=> (
-       <CountryItem  country={country}/>
+       <CountryItem key={country.name.official} 
+       country={country}
+       setSelectedCountry={setSelectedCountry}
+       />
       )) }
     </div>
   </main>

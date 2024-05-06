@@ -1,8 +1,12 @@
 import React from 'react'
 
-function CountryItem({country}) {
+function CountryItem({country,setSelectedCountry}) {
+    const handleClickCountry  = () => {
+        // console.log('clicked',country.name.common)
+        setSelectedCountry(country);
+    }
   return (
-    <div className='country__item'>
+    <div className='country__item' onClick={handleClickCountry}>
     <div className='country__image--container'>
       <img 
       className='country__image '

@@ -8,11 +8,20 @@ import { useState } from 'react';
 
 function App() {
   const [allCountries,setAllCountries] = useState([]); 
+  // Schema Country  : {name: Name,flags: Flags}
+  const [selectedCountry,setSelectedCountry] = useState (null); 
+
+  // fetch เสร็จให้เอาประเทศแรกเป็น selectedCountry 
 
   return (
     <div className='app'>
-     <CounrtList allCountries={allCountries} setAllCountries = {setAllCountries}/>
-     <CountryDetail/>
+     <CounrtList 
+     allCountries={allCountries} 
+     setAllCountries ={setAllCountries}
+     setSelectedCountry = {setSelectedCountry}
+     />
+     <CountryDetail 
+     selectedCountry={selectedCountry}/>
      <BucketList/>
     </div>
   );
