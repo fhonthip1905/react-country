@@ -27,10 +27,13 @@ function CounrtList({allCountries,setAllCountries,setSelectedCountry}) {
                 obj.flags = country.flags;
                 obj.region = country.region;
                 obj.population = country.population;
-                obj.capital = country.capital;
+                obj.capital = country.capital || [ ];
                 obj.languages = country.languages;
                 obj.borders = country.borders || [ ];
                 obj.currencies = country.currencies;
+                obj.latlng = country.latlng;
+                // obj.lat = country.latlng[0];
+                // obj.lng = country.latlng[1];
                 return obj;
             });
             // # 7 triggle Rerender
@@ -51,9 +54,18 @@ function CounrtList({allCountries,setAllCountries,setSelectedCountry}) {
     <div className='search'>
       <input 
       className='search__input' 
- 
+    
       />
       <button className='search__btn'>search</button>
+    </div>
+    <div>
+        <button>ASIA</button>
+        <button>EUROPE</button>
+        <button>NORTH-AMERICA</button>
+        <button>SOUTH-AMERICA</button>
+        <button>AFRICA</button>
+        <button>AUSTRALIA</button>
+        <button>ANTARTICA</button>
     </div>
     <div className='country'>
       {allCountries.length > 0 && allCountries.map((country)=> (
