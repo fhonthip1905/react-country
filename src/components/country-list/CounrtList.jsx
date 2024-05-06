@@ -3,8 +3,8 @@ import { useState } from 'react'
 import axios, { all } from 'axios';
 import CountryItem from './CountryItem';
 
-function CounrtList() {
-    const [allCountries,setAllCountries] = useState([]);   //#1 Run   , #8th
+function CounrtList({allCountries,setAllCountries}) {
+    // const [allCountries,setAllCountries] = useState([]);   //#1 Run   , #8th
 
      //#4  make auto Execute in Frist Render 
      //useEffect เป็นตัวกำหนดการ Render (first render, Every render)
